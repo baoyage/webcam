@@ -1,10 +1,10 @@
 import cv2
 from datetime import date
 from pathlib import Path
-import datetime
 
-today = date.today()
-todayStr=str(today)
+import datetime
+now = datetime.datetime.now() # current date and time
+date_time = now.strftime("%m-%d-%Y %H-%M-%S")
 HIGH_VALUE = 10000
 WIDTH = HIGH_VALUE
 HEIGHT = HIGH_VALUE
@@ -15,8 +15,8 @@ vid_capture.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
 vid_capture.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
 width = int(vid_capture.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(vid_capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
-print(width,height)
-output = cv2.VideoWriter("F:/webcam/"+todayStr+".mp4", vid_cod, 20, (width,height))
+
+output = cv2.VideoWriter("F:/webcam/"+date_time+".mp4", vid_cod, 20, (width,height))
 while(True):
      # Capture each frame of webcam video
     ret,frame = vid_capture.read()
